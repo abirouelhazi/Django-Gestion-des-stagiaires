@@ -72,7 +72,7 @@ The application centralizes internship requests, subject management, evaluations
 - Django
 - Django Authentication (Custom User Model)
 - Django Forms
-- SQLite / PostgreSQL (configurable)
+- SQLite 
 - File upload management
 - Role-based access control
 
