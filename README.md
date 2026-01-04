@@ -6,7 +6,7 @@ The application centralizes internship requests, subject management, evaluations
 
 ---
 
-## 🚀 Features
+## Features
 
 ### Authentication & Roles
 - Custom user model with email-based authentication
@@ -55,7 +55,7 @@ The application centralizes internship requests, subject management, evaluations
 
 ---
 
-## 🧩 Internship Workflow
+## Internship Workflow
 1. Supervisor proposes internship subjects
 2. Intern submits an internship request
 3. Administrator reviews and validates/rejects the request
