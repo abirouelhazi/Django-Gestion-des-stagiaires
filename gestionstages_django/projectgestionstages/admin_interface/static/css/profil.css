@@ -1,0 +1,103 @@
+/* Styles de base */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EFF8FA; /* Couleur de fond */
+    color: #183446; /* Couleur du texte */
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    background: var(--soft-blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.lien {
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+.lien:hover {
+    color: var(--medium-blue);
+}
+.logo {
+    height: 90px;
+    margin-right: 10px;
+}
+
+
+
+/* Styles du titre */
+h1 {
+    text-align: center; /* Centre le titre */
+    margin-top: 20px; /* Marge en haut */
+    color: #046E8F; /* Couleur du titre */
+}
+
+/* Styles de la section de profil */
+.profile {
+    max-width: 600px; /* Largeur maximale de la section de profil */
+    margin: 20px auto; /* Centre la section */
+    background-color: white; /* Couleur de fond de la section */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre pour la section */
+    padding: 20px; /* Rembourrage interne */
+    text-align: center; /* Centre le texte */
+}
+
+/* Styles de l'image de profil */
+.profile img {
+    width: 150px; /* Largeur de l'image */
+    height: 150px; /* Hauteur de l'image */
+    border-radius: 50%; /* Forme circulaire */
+    border: 2px solid #046E8F; /* Bordure autour de l'image */
+}
+
+/* Styles des informations du profil */
+.profile p {
+    font-size: 18px; /* Taille de la police */
+    margin: 10px 0; /* Marge en haut et en bas */
+}
+
+.profile strong {
+    color: #046E8F; /* Couleur des étiquettes */
+}
+/* Styles pour le bouton de modification */
+.bttn{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+.btn-primary {
+    text-decoration: none;
+    background-color: #046E8F; /* Couleur de fond du bouton */
+    border: none; /* Supprime la bordure */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px 20px; /* Rembourrage autour du bouton */
+    color: white; /* Couleur du texte du bouton */
+    transition: background-color 0.3s; /* Transition pour l'effet de survol */
+}
+
+.btn-primary:hover {
+    background-color: #38AECC; /* Couleur de fond au survol */
+}
+
+/* Footer */
+.footer {
+    background-color: var(--soft-blue);
+    color: var(--dark-blue);
+    padding: 8px;
+    line-height: 1.6;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+}
+
+.footer p {
+    margin: 5px 0;
+}

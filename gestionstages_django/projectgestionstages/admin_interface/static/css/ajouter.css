@@ -1,0 +1,87 @@
+/* Styles de base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EFF8FA;
+    color: #183446;
+}
+
+/* Styles du titre */
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    color: #046E8F;
+}
+.h2 {
+    text-align: center;
+    margin-top: 20px;
+    color: #046E8F;
+}
+/* Styles du formulaire */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles des champs de formulaire */
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #183446;
+    border-radius: 4px;
+    box-sizing: border-box; /* Pour inclure le padding dans la largeur totale */
+    transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="number"]:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #046E8F; /* Changer la couleur de la bordure au focus */
+    outline: none; /* Supprimer le contour par défaut */
+}
+
+/* Styles des boutons */
+button {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    
+    padding: 10px 20px;
+    background-color: #046E8F; /* Couleur pour le bouton d'ajout */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px; /* Augmenter la taille de la police */
+}
+
+button:hover {
+    background-color: #38AECC; /* Couleur au survol */
+}
+
+/* Styles du lien de retour */
+a {
+    display: block;
+    text-align: left;
+    margin-top: 20px;
+    color: #046E8F;
+    text-decoration: none;
+    font-size: 16px; /* Augmenter la taille de la police */
+}
+
+a:hover {
+    text-decoration: underline;
+}

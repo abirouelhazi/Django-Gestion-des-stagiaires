@@ -1,0 +1,52 @@
+<!-- admin_dashboard.html -->
+{% load static %}   
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - Admin</title>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+</head>
+<body class="admin-dashboard">
+    <div class="navbar">
+        <div><img src="{% static 'images/cni.png' %}" alt="Logo" class="logo"></div>
+        <div><a class="lien" href="{% url 'admin_dashboard' %}">Accueil</a></div>
+        <div><a class="lien" href="{% url 'gestion_demandes_stage' %}">Demandes de stages</a></div>
+        <div><a class="lien" href="{% url 'gestion_stagiaires' %}">Stagiaires</a></div>
+        <div><a class="lien" href="{% url 'gestion_encadrants' %}">Encadrants</a></div>
+        <div><a class="lien" href="{% url 'profil_admin' %}">Mon Profil</a></div>
+        <div><a class="lien" href="{% url 'deconnexion' %}">Déconnexion</a></div>
+    </div>
+
+    
+    <div class="content">
+        <div class="intro">
+            <h1>Bienvenue {{ admin.prenom }} {{admin.nom}}!</h1>
+            <div><a class="lien" href="{% url 'add_admin' %}">Ajouter un nouvel administrateur</a></div>
+        </div>
+        <div class="container">
+            <div class="card">
+                <h3>Accompagnement</h3>
+                <p>En guidant les stagiaires avec bienveillance et en facilitant leur adaptation, l'administrateur contribue non seulement à leur réussite, mais aussi à la dynamique positive de toute l'équipe. Votre engagement est une clé essentielle pour leur permettre de s'épanouir et de donner le meilleur d'eux-mêmes.</p>
+            </div>
+            <div class="card">
+                <h3>Épanouissement</h3>
+                <p>En cultivant un tel climat, l’administrateur devient un catalyseur essentiel pour la réussite des stagiaires, leur permettant de s’épanouir pleinement et de contribuer de manière significative à leur parcours et à l’organisation. Votre implication est donc un levier clé pour leur progression et leur épanouissement.</p>
+            </div>
+            <div class="card">
+                <h3>Collaboration</h3>
+                <p>En favorisant un esprit d’équipe et en encourageant les échanges constructifs, l’administrateur joue un rôle clé pour créer une dynamique positive, où chacun se sent soutenu et valorisé. Votre engagement à promouvoir cette synergie est essentiel pour garantir des stages enrichissants et porteurs de succès.</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    <footer class="footer text-center">
+        <div class="cont">
+            <p>&copy; 2025 Gestion des Stagiaires. Tous droits réservés.</p>
+            <p><strong>Centre National de l’Informatique</strong></p>
+        </div>
+    </footer>
+</body>
+</html>

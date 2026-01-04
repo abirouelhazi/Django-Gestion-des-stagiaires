@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333; /* Couleur de fond de la navbar */
+    color: white; /* Couleur du texte */
+    padding: 10px 0; /* Espacement vertical */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Espacement horizontal */
+}
+
+.nav-links {
+    list-style: none; /* Supprime les puces de la liste */
+    display: flex; /* Affiche les éléments de la liste en ligne */
+}
+
+.nav-links li {
+    margin: 0 15px; /* Espacement entre les éléments de la liste */
+}
+
+.container {
+    max-width: 800px; /* Limite la largeur du contenu */
+    margin: 20px auto; /* Centre le conteneur */
+    padding: 20px;
+    background-color: white; /* Fond blanc pour le contenu */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour le conteneur */
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #333; /* Couleur du titre */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Espacement entre les groupes de formulaire */
+}
+
+label {
+    display: block; /* Affiche le label en bloc */
+    margin-bottom: 5px; /* Espacement en bas du label */
+}
+
+input[type="text"],
+textarea {
+    width: 100%; /* Prend toute la largeur */
+    padding: 10px; /* Espacement interne */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 4px; /* Coins arrondis */
+}
+
+.btn-primary {
+    background-color: #046E8F; /* Couleur de fond du bouton */
+    border: none; /* Pas de bordure */
+    color: white; /* Couleur du texte */
+    padding: 10px 15px; /* Espacement interne */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en forme de main */
+    transition: background-color 0.3s; /* Transition pour le changement de couleur */
+}
+
+.btn-primary:hover {
+    background-color: #38AECC; /* Couleur de fond au survol */
+}
+
+/* Footer */
+.footer {
+    background-color: #333; /* Couleur de fond du footer */
+    color: white; /* Couleur du texte */
+    padding: 10px 0; /* Espacement vertical */
+    text-align: center; /* Centre le texte */
+    margin-top: 20px; /* Espacement en haut du footer */
+}

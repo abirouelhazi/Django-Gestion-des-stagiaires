@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Stagiaires</title>
+    <link rel="stylesheet" href="{% static 'css/mes_stagiaires.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div><img src="{% static 'images/cni.png' %}" alt="Logo" class="logo"></div>
+        <div><a class="lien" href="{% url 'encadrant_dashboard' %}">Accueil</a></div>
+        <div><a class="lien" href="{% url 'encadrer_stagiaires' %}">Mes stagiaires</a></div>
+        <div><a class="lien" href="{% url 'gestion_sujets' %}">Mes sujets proposés</a></div>
+        <div><a class="lien" href="{% url 'profil_encadrant' %}">Mon Profil</a></div>
+        <div><a class="lien" href="{% url 'deconnexion' %}">Déconnexion</a></div>
+    </div>
+
+    <div class='thecontaine'>
+        <h1>Mes Stagiaires</h1>
+        <form method="POST" action="{% url 'evaluer_stagiaire' %}">
+            {% csrf_token %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Type de stage</th>
+                        <th>Date de début du stage</th>
+                        <th>Date de fin du stage</th>
+                        <th>Sujet</th>
+                        <th>Rapport</th>
+                        <th>Note d'évaluation</th>
+                        <th>État du stage</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stagiaire in stagiaires %}
+                        {% with stagiaire.demandes.first as demande %}
+                            <tr>
+                                <td>{{ stagiaire.user.nom }}</td>
+                                <td>{{ stagiaire.user.prenom }}</td>
+                                <td>{{ demande.type_stage }}</td>
+                                <td>{{ demande.date_debut_stage }}</td>
+                                <td>{{ demande.date_fin_stage }}</td>
+                                <td>{{ demande.sujet.titre }}</td>
+                                <td>
+                                    {% if demande.rapport %}
+                                        <a href="{{ demande.rapport.url }}">Voir Rapport</a>
+                                    {% else %}
+                                        Pas de rapport
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <input type="number" name="note_{{ stagiaire.id }}" min="0" max="20" step="0.1" value="{{ demande.note_evaluation|default:0 }}">
+                                </td>
+                                <td>
+                                    <select name="etat_stage_{{ stagiaire.id }}">
+                                        <option value="non concluant" {% if demande.etat_stage == "non concluant" %}selected{% endif %}>Non concluant</option>
+                                        <option value="concluant" {% if demande.etat_stage == "concluant" %}selected{% endif %}>Concluant</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button type="submit" name="stagiaire_id" value="{{ stagiaire.id }}">Terminer</button>
+                                </td>
+                            </tr>
+                        {% endwith %}
+                    {% empty %}
+                        <tr>
+                            <td colspan="10">Aucun stagiaire associé.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <footer class="footer text-center">
+        <div class="cont">
+            <p>&copy; 2025 Gestion des Stagiaires. Tous droits réservés.</p>
+            <p><strong>Centre National de l’Informatique</strong></p>
+        </div>
+    </footer>
+
+</body>
+</html>

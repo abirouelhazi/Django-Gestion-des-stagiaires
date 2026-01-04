@@ -1,0 +1,125 @@
+/* Variables pour les couleurs */
+:root {
+    --dark-blue: #183446;
+    --medium-blue: #046E8F;
+    --light-blue: #38AECC;
+    --lift-blue: #58B7D1;
+    --soft-blue: #BCE0EA;
+    --ciel-blue: #EFF8FA;
+}
+
+/* Général */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--ciel-blue);
+    color: var(--dark-blue);
+}
+.navbar {
+    background: var(--ciel-blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.lien {
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+.lien:hover {
+    color: var(--medium-blue);
+}
+.logo {
+    height: 90px;
+    margin-right: 10px;
+}
+
+/* Contenu principal */
+.thecontainer {
+    margin: 20px 50px;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: var(--medium-blue);
+}
+
+/* Styles pour le tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto; /* Centre le tableau */
+    background-color: white; /* Fond blanc pour le tableau */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour le tableau */
+}
+
+th, td {
+    border: 1px solid var(--medium-blue);
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--soft-blue);
+    color: var(--dark-blue);
+}
+
+tr:hover {
+    background-color: var(--ciel-blue); /* Change le fond au survol */
+}
+
+td {
+    width: 27%;
+    color: var(--dark-blue);
+}
+.btn{
+    color: var(--medium-blue);
+    
+}
+/* Styles pour les boutons */
+.button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--light-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin: 5px 0;
+    border: none;
+    font-size: 20px;
+}
+
+.button:hover {
+    background-color: var(--lift-blue);
+}
+
+/* Message d'absence de stagiaires */
+tbody tr.empty {
+    background-color: #f9f9f9;
+    font-style: italic;
+    text-align: center; /* Centre le texte */
+    color: var(--dark-blue);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--ciel-blue);
+    color: var(--dark-blue);
+    padding: 8px;
+    line-height: 1.6;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+}
+
+.footer p {
+    margin: 5px 0;
+}

@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le Sujet</title>
+    <link rel="stylesheet" href="{% static 'css/ajouter.css' %}">
+</head>
+<body>
+    <h1 class ="h2" >Modifier le Sujet</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+    <a href="{% url 'gestion_sujets' %}">Retour à la liste des sujets</a>
+</body>
+</html>

@@ -1,0 +1,170 @@
+/* Variables pour les couleurs */
+:root {
+    --dark-blue: #183446;
+    --medium-blue: #046E8F;
+    --light-blue: #38AECC;
+    --lift-blue: #58B7D1;
+    --soft-blue: #BCE0EA;
+    --ciel-blue: #EFF8FA;
+}
+
+/* Général */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--ciel-blue);
+    color: var(--dark-blue);
+    overflow-x: hidden;
+}
+
+
+
+.navbar {
+    background: var(--ciel-blue);
+    padding: 10px 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.lien {
+    color: var(--medium-blue);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+    margin-right: 30px;
+}
+.lien:hover {
+    color: var(--medium-blue);
+}
+.logo {
+    height: 90px;
+    margin-right: 10px;
+}
+
+
+/* Header */
+.header {
+    background: linear-gradient(to top, var(--ciel-blue), var(--soft-blue));
+    color: var(--dark-blue);
+    padding: 100px 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.header p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Conteneur principal pour l'intro et le graphique */
+.content-container {
+    border: 1px solid var(--medium-blue);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 80px auto; /* Centrer le conteneur */
+    display: flex;
+    justify-content: space-between; /* Espacer l'intro et le graphique */
+    align-items: center; 
+    gap: 20px; /* Espacement entre l'introduction et le graphique */
+    padding: 40px;
+    width: 90%; /* Ajusté pour être plus responsive */
+}
+
+/* Style pour l'introduction à gauche */
+.intro-container {
+    width: 60%; /* Ajusté pour mieux correspondre au graphique */
+}
+
+.intro-text h3 {
+    color: var(--dark-blue);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.intro-text p {
+    font-size: 1.2rem;
+    color: var(--dark-blue);
+    line-height: 1.6;
+}
+
+/* Style pour le graphique */
+#repart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+.chart-container {
+    width: 35%; /* Ajusté pour être symétrique à l'intro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#stagiairesChart {
+    width: 100%;  /* Le graphique occupe 100% de la largeur de son conteneur */
+    height: 100px; /* Fixer la hauteur du graphique */
+}
+
+/* Canvas pour le graphique */
+canvas {
+    width: 100%; /* Le graphique occupe toute la largeur du conteneur */
+    height: 100px; /* Fixe la hauteur du graphique */    
+}
+
+/* Footer */
+.footer {
+    background-color: var(--soft-blue);
+    color: var(--dark-blue);
+    padding: 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+.footer a {
+    color: var(--dark-blue);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: var(--medium-blue);
+}
+
+.footer strong {
+    font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

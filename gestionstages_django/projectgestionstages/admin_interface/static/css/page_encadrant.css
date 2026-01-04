@@ -1,0 +1,110 @@
+/* Variables pour les couleurs */
+:root {
+    --dark-blue: #183446;
+    --medium-blue: #046E8F;
+    --light-blue: #38AECC;
+    --lift-blue: #58B7D1;
+    --soft-blue: #BCE0EA;
+    --ciel-blue: #EFF8FA;
+}
+
+/* Général */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--ciel-blue);
+    color: var(--dark-blue);
+}
+.navbar {
+    background: var(--ciel-blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.lien {
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+.lien:hover {
+    color: var(--medium-blue);
+}
+.logo {
+    height: 90px;
+    margin-right: 10px;
+}
+/* Contenu principal */
+.container {
+    max-width: 1200px; /* Limite la largeur du contenu */
+    margin: 0 auto; /* Centre le conteneur */
+    padding: 20px;
+    background-color: white; /* Fond blanc pour le contenu */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour le conteneur */
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: var(--medium-blue);
+}
+
+p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 10px 20px;
+    line-height: 1.6;
+}
+
+/* Statistiques */
+.card {
+    margin-top: 20px;
+    border-color: #046E8F;
+    border-radius: 8px; /* Coins arrondis pour les cartes */
+    transition: transform 0.3s; /* Effet de transformation au survol */
+}
+
+.card:hover {
+    transform: scale(1.02); /* Légère augmentation de la taille au survol */
+}
+
+.card-header {
+    background-color: var(--medium-blue);
+    color: white; /* Texte blanc pour le header */
+    font-weight: bold; /* Texte en gras */
+}
+
+.card-body {
+    
+    background-color: var(--ciel-blue); /* Fond doux pour le corps de la carte */
+    color: var(--dark-blue); /* Couleur du texte */
+}
+
+.card-title {
+    font-size: 1.5rem; /* Taille de police pour le titre */
+    margin-bottom: 10px; /* Espacement en bas du titre */
+}
+
+.card-text {
+    font-size: 1rem; /* Taille de police pour le texte */
+}
+
+/* Footer */
+.footer {
+    background-color: var(--ciel-blue);
+    color: var(--dark-blue);
+    padding: 8px;
+    line-height: 1.6;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+}
+
+.footer p {
+    margin: 5px 0;
+}	

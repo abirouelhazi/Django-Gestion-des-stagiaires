@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Demandes de Stage</title>
+    <style>
+        /* Variables pour les couleurs */
+        :root {
+            --dark-blue: #183446;
+            --medium-blue: #046E8F;
+            --light-blue: #38AECC;
+            --lift-blue: #58B7D1;
+            --soft-blue: #BCE0EA;
+            --ciel-blue: #EFF8FA;
+        }
+
+        /* Général */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--ciel-blue);
+            color: var(--dark-blue);
+        }
+        .navbar {
+            background: var(--ciel-blue);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px 30px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .lien {
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        .lien:hover {
+            color: var(--medium-blue);
+        }
+        .logo {
+            height: 90px;
+            margin-right: 10px;
+        }
+        /* Styles du contenu principal */
+        .container {
+            padding: 20px;
+            margin: 20px 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Styles du tableau */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #183446;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: var(--light-blue);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #EFF8FA;
+        }
+
+        tr:hover {
+            background-color: #D0E8F2;
+        }
+
+        td a {
+            color: var(--light-blue);
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--ciel-blue);
+            color: var(--dark-blue);
+            padding: 8px;
+            line-height: 1.6;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 60px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }	
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div><img src="{% static 'images/cni.png' %}" alt="Logo" class="logo"></div>
+        <div><a class="lien" href="{% url 'stagiaire_dashboard' %}">Accueil</a></div>
+        <div><a class="lien" href="{% url 'les_sujets' %}">Les sujets proposés</a></div>
+        <div><a class="lien" href="{% url 'mes_demandes' %}">Mes demandes de stage</a></div>
+        <div><a class="lien" href="{% url 'profil_stagiaire' %}">Mon Profil</a></div>
+        <div><a class="lien" href="{% url 'deconnexion' %}">Déconnexion</a></div>
+    </div>
+    <div class="container">
+        <h1>Mes Demandes de Stage</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sujet</th>
+                    <th>Encadrant</th>
+                    <th>Type de Stage</th>
+                    <th>Date de Début</th>
+                    <th>Date de Fin</th>
+                    <th>État</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for demande in demandes %}
+                    <tr>
+                        <td>{{ demande.sujet.titre }}</td>
+                        <td>{{ demande.sujet.encadrant.user.prenom }} {{ demande.sujet.encadrant.user.nom }}</td>
+                        <td>{{ demande.type_stage }}</td>
+                        <td>{{ demande.date_debut_stage }}</td>
+                        <td>{{ demande.date_fin_stage }}</td>
+                        <td>{{ demande.etat }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="10">Aucune demande de stage trouvée.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    
+                    <th>Mettre mon Rapport</th>
+                    <th>Note d'Évaluation</th>
+                    <th>État du Stage</th>
+                    <th>Télécharger mon Attestation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for demande in demandes %}
+                    <tr>
+                        
+                        {% if demande.etat == 'acceptee' %}
+                            <td>
+                                <form method="POST" action="{% url 'mettre_rapport' demande.id %}" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <input type="file" name="rapport" required>
+                                    <button type="submit">Envoyer</button>
+                                </form>
+                            </td>
+                            <td>
+                                {{ demande.note_evaluation|default:"Pas encore évalué" }}
+                            </td>
+                            <td>
+                                {{ demande.etat_stage }}
+                            </td>
+                            <td>
+                                {% if demande.attestation %}
+                                    <a href="{{demande.attestation.url}}" download>Télécharger mon Attestation</a>
+                                {% else %}
+                                    Attestation non disponible
+                                {% endif %}
+                            </td>
+                        {% else %}
+                            <td colspan="5">Demande non acceptée, aucune action disponible.</td>
+                        {% endif %}
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="10">Aucune demande de stage trouvée.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <footer class="footer text-center">
+        <div class="cont">
+            <p>&copy; 2025 Gestion des Stagiaires. Tous droits réservés.</p>
+            <p><strong>Centre National de l’Informatique</strong></p>
+        </div>
+    </footer>
+</body>
+</html>

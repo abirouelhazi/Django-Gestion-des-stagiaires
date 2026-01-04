@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Sujet</title>
+    <link rel="stylesheet" href="{% static 'css/afficher_sujet.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div><img src="{% static 'images/cni.png' %}" alt="Logo" class="logo"></div>
+        <div><a class="lien" href="{% url 'encadrant_dashboard' %}">Accueil</a></div>
+        <div><a class="lien" href="{% url 'encadrer_stagiaires' %}">Mes stagiaires</a></div>
+        <div><a class="lien" href="{% url 'gestion_sujets' %}">Mes sujets proposés</a></div>
+        <div><a class="lien" href="{% url 'profil_encadrant' %}">Mon Profil</a></div>
+        <div><a class="lien" href="{% url 'deconnexion' %}">Déconnexion</a></div>
+    </div>
+
+    <div class="container mt-5">
+        <h1>Détails du Sujet</h1>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>{{ sujet.titre }}</h4>
+            </div>
+            <div class="card-body">
+                <p><strong>Description :</strong> {{ sujet.description }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Stagiaires Associés :</h4>
+            </div>
+            <div class="card-body">
+                <ul id="lo">
+                    {% for stagiaire in stagiaires %}
+                        <li id="ol">{{ stagiaire.user.prenom }} {{ stagiaire.user.nom }}</li>
+                    {% empty %}
+                        <li>Aucun stagiaire associé à ce sujet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <a href="{% url 'gestion_sujets' %}" class="button">Retour à mes sujets</a>
+    </div>
+    <footer class="footer text-center">
+        <div class="cont">
+            <p>&copy; 2025 Gestion des Stagiaires. Tous droits réservés.</p>
+            <p><strong>Centre National de l’Informatique</strong></p>
+        </div>
+    </footer>
+</body>
+</html>

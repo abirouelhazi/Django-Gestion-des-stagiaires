@@ -1,0 +1,70 @@
+/* Variables pour les couleurs */
+:root {
+    --dark-blue: #183446;   /* Couleur sombre */
+    --medium-blue: #046E8F; /* Couleur moyenne */
+    --light-blue: #38AECC;  /* Couleur claire */
+    --lift-blue: #58B7D1;   /* Couleur lift */
+    --soft-blue: #BCE0EA;   /* Couleur douce */
+    --ciel-blue: #EFF8FA;   /* Couleur ciel */
+}
+
+/* Général */
+body {
+    background-color: var(--ciel-blue); /* Couleur de fond douce */
+    color: var(--dark-blue); /* Couleur du texte */
+}
+/* Navbar */
+.navbar {
+    background: var(--soft-blue);
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--medium-blue);
+}
+/* Profil */
+.profile {
+    background-color: white; /* Fond blanc pour le profil */
+    padding: 20px; /* Espacement interne */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour le profil */
+}
+
+.profile img {
+    margin-bottom: 15px; /* Espace en bas de l'image */
+}
+
+.profile p {
+    font-size: 1.1rem; /* Taille de police légèrement augmentée */
+    margin: 5px 0; /* Espacement vertical entre les paragraphes */
+}
+
+/* Bouton Modifier */
+.btn-primary {
+    background-color: var(--medium-blue); /* Couleur de fond du bouton */
+    border: none; /* Pas de bordure */
+}
+
+.btn-primary:hover {
+    background-color: var(--light-blue); /* Couleur de fond au survol */
+}

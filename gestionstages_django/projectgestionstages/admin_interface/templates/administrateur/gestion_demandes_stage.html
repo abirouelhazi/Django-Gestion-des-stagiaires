@@ -1,0 +1,202 @@
+<!-- gestion_demandes_stage.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les Demandes de Stage</title>
+    <link rel="stylesheet" href="{% static 'css/gestion_demandes.css' %}" />
+    <style>
+      /* Styles de base */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #eff8fa;
+        color: #183446;
+      }
+
+      .navbar {
+        background: var(--soft-blue);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .lien {
+        color: var(--dark-blue);
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+        margin: 0 15px;
+      }
+
+      .lien:hover {
+        color: var(--medium-blue);
+      }
+
+      .logo {
+        height: 90px;
+        margin-right: 10px;
+      }
+
+      /* Styles du bouton d'ajout */
+      .btn {
+        color: #183446;
+        margin: 20px 40px;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #58b7d1;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #38aecc;
+      }
+
+      /* Styles du contenu principal */
+      .content {
+        padding: 20px;
+        margin: 20px 40px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .content h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      /* Styles du tableau */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #183446;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #38aecc;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #eff8fa;
+      }
+
+      tr:hover {
+        background-color: #d0e8f2;
+      }
+
+      td a {
+        color: #38aecc;
+        text-decoration: none;
+      }
+
+      td a:hover {
+        text-decoration: underline;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--soft-blue);
+        color: var(--dark-blue);
+        padding: 8px;
+        line-height: 1.6;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 60px;
+      }
+
+      .footer p {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body class="admin-dashboard">
+    <div class="navbar">
+      <div>
+        <img src="{% static 'images/cni.png' %}" alt="Logo" class="logo" />
+      </div>
+      <div><a class="lien" href="{% url 'admin_dashboard' %}">Accueil</a></div>
+      <div>
+        <a class="lien" href="{% url 'gestion_demandes_stage' %}"
+          >Demandes de stages</a
+        >
+      </div>
+      <div>
+        <a class="lien" href="{% url 'gestion_stagiaires' %}">Stagiaires</a>
+      </div>
+      <div>
+        <a class="lien" href="{% url 'gestion_encadrants' %}">Encadrants</a>
+      </div>
+      <div><a class="lien" href="{% url 'profil_admin' %}">Mon Profil</a></div>
+      <div><a class="lien" href="{% url 'deconnexion' %}">Déconnexion</a></div>
+    </div>
+
+    <div class="content">
+      <h1>Les Demandes de Stage</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom & Prénom</th>
+            <th>Email</th>
+            <th>Spécialité</th>
+            <th>Sujet</th>
+            <th>État</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for demande in demandes %}
+          <tr>
+            <td>
+              <a href="{% url 'stagiaire_detail' demande.stagiaire.id %}">
+                {{ demande.stagiaire.user.nom }}
+                {{demande.stagiaire.user.prenom }}
+              </a>
+            </td>
+            <td>{{ demande.stagiaire.user.email }}</td>
+            <td>{{ demande.stagiaire.specialite }}</td>
+            <td>{{ demande.sujet.titre }}</td>
+            <td>{{ demande.etat }}</td>
+            <td>
+              <a href="{% url 'changer_etat_demande' demande.id 'accepter' %}"
+                >Accepter</a
+              >
+              <a href="{% url 'changer_etat_demande' demande.id 'refuser' %}"
+                >Refuser</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <footer class="footer text-center">
+      <div class="cont">
+        <p>&copy; 2025 Gestion des Stagiaires. Tous droits réservés.</p>
+        <p><strong>Centre National de l’Informatique</strong></p>
+      </div>
+    </footer>
+  </body>
+</html>

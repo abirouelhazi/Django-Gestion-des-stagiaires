@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Sujets Proposés</title>
+    <link rel="stylesheet" href="{% static 'css/mes_sujets.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div><img src="{% static 'images/cni.png' %}" alt="Logo" class="logo"></div>
+        <div><a class="lien" href="{% url 'encadrant_dashboard' %}">Accueil</a></div>
+        <div><a class="lien" href="{% url 'encadrer_stagiaires' %}">Mes stagiaires</a></div>
+        <div><a class="lien" href="{% url 'gestion_sujets' %}">Mes sujets proposés</a></div>
+        <div><a class="lien" href="{% url 'profil_encadrant' %}">Mon Profil</a></div>
+        <div><a class="lien" href="{% url 'deconnexion' %}">Déconnexion</a></div>
+    </div>
+
+    <div class="thecontainer">
+        <h1>Mes Sujets Proposés</h1>
+        {% if messages %}
+            <script>
+                window.onload = function() {
+                    {% for message in messages %}
+                        alert("{{ message }}");
+                    {% endfor %}
+                }
+            </script>
+        {% endif %}
+        <!-- Bouton pour proposer un nouveau sujet -->
+        <a href="{% url 'proposer_sujet' %}" class="button">Proposer un Nouveau Sujet</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre du Sujet</th>
+                    <th>Détails</th>
+                    <th>Les Stagiaires</th>
+                    <th>Actions</th> <!-- Nouvelle colonne pour les actions -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for sujet_info in sujets_avec_stagiaires %}
+                    <tr>
+                        <td>{{ sujet_info.sujet.titre }}</td>
+                        <td>
+                            <a class="btn" href="{% url 'afficher_sujet' sujet_info.sujet.id %}">Détails du sujet</a>
+                        </td>
+                        <td>
+                            {% for stagiaire in sujet_info.stagiaires %}
+                                {{ stagiaire.user.nom }} {{ stagiaire.user.prenom }}<br>
+                            {% empty %}
+                                Aucun stagiaire
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a class="button" href="{% url 'modifier_sujet' sujet_info.sujet.id %}">Modifier</a>
+                            <form action="{% url 'supprimer_sujet' sujet_info.sujet.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button class="button" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce sujet ?');">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">Aucun sujet proposé pour le moment.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <footer class="footer text-center">
+        <div class="cont">
+            <p>&copy; 2025 Gestion des Stagiaires. Tous droits réservés.</p>
+            <p><strong>Centre National de l’Informatique</strong></p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+/* Variables pour les couleurs */
+:root {
+    --dark-blue: #183446;
+    --medium-blue: #046E8F;
+    --light-blue: #38AECC;
+    --lift-blue: #58B7D1;
+    --soft-blue: #BCE0EA;
+    --ciel-blue: #EFF8FA;
+}
+
+/* Général */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--ciel-blue);
+    color: var(--dark-blue);
+}
+.navbar {
+    background: var(--ciel-blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.lien {
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+.lien:hover {
+    color: var(--medium-blue);
+}
+.logo {
+    height: 90px;
+    margin-right: 10px;
+}
+
+/* Général */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--ciel-blue);
+    color: var(--dark-blue);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: var(--medium-blue);
+}
+
+.sujet-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sujet-item {
+    background-color: var(--ciel-blue);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    
+}
+
+.sujet-item h2 {
+    color: var(--dark-blue);
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--medium-blue);
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    position: absolute;
+    left: 160px;
+}
+
+.btn:hover {
+    background-color: var(--dark-blue);
+}
+/* Footer */
+.footer {
+    background-color: var(--ciel-blue);
+    color: var(--dark-blue);
+    padding: 8px;
+    line-height: 1.6;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+}
+
+.footer p {
+    margin: 5px 0;
+}	

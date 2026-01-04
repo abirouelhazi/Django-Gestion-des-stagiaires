@@ -1,0 +1,113 @@
+/* Styles de base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EFF8FA;
+    color: #183446;
+}
+.navbar {
+    background: var(--soft-blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.lien {
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+.lien:hover {
+    color: var(--medium-blue);
+}
+.logo {
+    height: 90px;
+    margin-right: 10px;
+}
+
+/* Styles du bouton d'ajout */
+.btn {
+    display: inline-block;
+    margin: 20px 40px;
+    padding: 10px 20px;
+    background-color: #38AECC;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #58B7D1;
+}
+
+/* Styles du contenu principal */
+.content {
+    padding: 20px;
+    
+    margin: 20px 40px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styles du tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #183446;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #38AECC;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #EFF8FA;
+}
+
+tr:hover {
+    background-color: #EFF8FA;
+}
+
+td a {
+    color: #38AECC;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+/* Footer */
+.footer {
+    background-color: var(--soft-blue);
+    color: var(--dark-blue);
+    padding: 8px;
+    line-height: 1.6;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+}
+
+.footer p {
+    margin: 5px 0;
+}	

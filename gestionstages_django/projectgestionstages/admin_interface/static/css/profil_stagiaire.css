@@ -1,0 +1,99 @@
+/* Variables pour les couleurs */
+:root {
+    --dark-blue: #183446;   /* Couleur sombre */
+    --medium-blue: #046E8F; /* Couleur moyenne */
+    --light-blue: #38AECC;  /* Couleur claire */
+    --lift-blue: #58B7D1;   /* Couleur lift */
+    --soft-blue: #BCE0EA;   /* Couleur douce */
+    --ciel-blue: #EFF8FA;   /* Couleur ciel */
+}
+
+/* Général */
+body {
+    background-color: var(--ciel-blue); /* Couleur de fond douce */
+    color: var(--dark-blue); /* Couleur du texte */
+    font-family: Arial, sans-serif; /* Police de caractères */
+}
+
+.nabar {
+    background: var(--soft-blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 30px;
+    text-align: center; 
+}
+.lien {
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+.lien:hover {
+    color: var(--medium-blue);
+}
+.logo {
+    height: 90px;
+    margin-right: 10px;
+}
+
+
+
+/* Profil */
+.container {
+    max-width: 800px; /* Limite la largeur du contenu */
+    margin: 20px auto; /* Centre le conteneur */
+    padding: 20px;
+    width: 52vh;
+}
+
+.profile {
+    background-color: white; /* Fond blanc pour le profil */
+    padding: 20px; /* Espacement interne */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour le profil */
+}
+
+.profile img {
+    margin-bottom: 15px; /* Espace en bas de l'image */
+    border-radius: 50%; /* Arrondir l'image pour un effet de cercle */
+    width: 100px; /* Largeur de l'image */
+    height: 100px; /* Hauteur de l'image */
+}
+
+.profile h1 {
+    text-align: center; /* Centre le titre */
+    color: var(--medium-blue); /* Couleur du titre */
+}
+
+.profile p {
+    font-size: 1.1rem; /* Taille de police légèrement augmentée */
+    margin: 5px 0; /* Espacement vertical entre les paragraphes */
+}
+
+/* Bouton Modifier */
+.btn-primary {
+    background-color: var(--medium-blue); /* Couleur de fond du bouton */
+    border: none; /* Pas de bordure */
+    color: white; /* Couleur du texte */
+    padding: 10px 15px; /* Espacement interne */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en forme de main */
+    transition: background-color 0.3s; /* Transition pour le changement de couleur */
+}
+
+.btn-primary:hover {
+    background-color: var(--light-blue); /* Couleur de fond au survol */
+}
+/* Footer */
+.footer {
+    background-color: var(--soft-blue);
+    color: var(--dark-blue);
+    padding: 8px;
+    line-height: 1.6;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+}
+
+.footer p {
+    margin: 5px 0;
+}

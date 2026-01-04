@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Sujets Proposés</title>
+    <link rel="stylesheet" href="{% static 'css/les_sujets.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div><img src="{% static 'images/cni.png' %}" alt="Logo" class="logo"></div>
+        <div><a class="lien" href="{% url 'stagiaire_dashboard' %}">Accueil</a></div>
+        <div><a class="lien" href="{% url 'les_sujets' %}">Les sujets proposés</a></div>
+        <div><a class="lien" href="{% url 'mes_demandes' %}">Mes demandes de stage</a></div>
+        <div><a class="lien" href="{% url 'profil_stagiaire' %}">Mon Profil</a></div>
+        <div><a class="lien" href="{% url 'deconnexion' %}">Déconnexion</a></div>
+    </div>
+
+    <div class="container">
+        <a class="btn" href="{% url 'demande_stage' %}">Demander un Stage</a>
+        <h1>Liste des Sujets Proposés</h1>
+        <ul class="sujet-list">
+            {% for sujet in sujets %}
+                <li class="sujet-item">
+                    <h2>{{ sujet.titre }}</h2>
+                    <p>{{ sujet.description }}</p>
+                    <p><strong>Encadrant :</strong> {{ sujet.encadrant.user.prenom }} {{ sujet.encadrant.user.nom }}</p>
+                </li>
+            {% empty %}
+                <li>Aucun sujet proposé pour le moment.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <footer class="footer text-center">
+        <div class="cont">
+            <p>&copy; 2025 Gestion des Stagiaires. Tous droits réservés.</p>
+            <p><strong>Centre National de l’Informatique</strong></p>
+        </div>
+    </footer>
+</body>
+</html>

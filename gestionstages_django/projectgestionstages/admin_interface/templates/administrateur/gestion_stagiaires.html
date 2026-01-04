@@ -1,0 +1,98 @@
+<!-- gestion_stagiaires.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Stagiaires</title>
+    <link rel="stylesheet" href="{% static 'css/stagiaires.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div><img src="{% static 'images/cni.png' %}" alt="Logo" class="logo"></div>
+        <div><a class="lien" href="{% url 'admin_dashboard' %}">Accueil</a></div>
+        <div><a class="lien" href="{% url 'gestion_demandes_stage' %}">Demandes de stages</a></div>
+        <div><a class="lien" href="{% url 'gestion_stagiaires' %}">Stagiaires</a></div>
+        <div><a class="lien" href="{% url 'gestion_encadrants' %}">Encadrants</a></div>
+        <div><a class="lien" href="{% url 'profil_admin' %}">Mon Profil</a></div>
+        <div><a class="lien" href="{% url 'deconnexion' %}">Déconnexion</a></div>
+    </div>
+
+    <a href="{% url 'ajouter_stagiaire' %}" class="btn">Ajouter un stagiaire</a>
+
+    <div class="content">
+        <h1>Liste des Stagiaires</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom & Prénom</th>
+                    <th>Email</th>
+                    <th>Spécialité</th>
+                    <th>Encadrant</th>
+                    <th>A des stages ?</th>
+                    <th>État du Stage</th>
+                    <th>Soumettre l'Attestation de Stage</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stagiaire in stagiaires %}
+                <tr>
+                    <td>{{ stagiaire.user.prenom }} {{ stagiaire.user.nom }}</td>
+                    <td>{{ stagiaire.user.email }}</td>
+                    <td>{{ stagiaire.specialite }}</td>
+                    <td>
+                        {% if stagiaire.demandes.exists %}
+                            {% with stagiaire.demandes.first.sujet.encadrant.user as encadrant %}
+                                {{ encadrant.nom }} {{ encadrant.prenom }}
+                            {% endwith %}
+                        {% else %}
+                            Pas d'encadrant assigné
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if stagiaire.has_stages %}
+                            Oui
+                        {% else %}
+                            Non
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if stagiaire.has_stages %}
+                            {{ stagiaire.demandes.first.etat_stage }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if stagiaire.has_stages and stagiaire.demandes.first.etat_stage == 'concluant' %}
+                            <form method="POST" action="{% url 'soumettre_attestation' stagiaire.demandes.first.id %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="file" name="attestation" required>
+                                <button type="submit">Soumettre</button>
+                            </form>
+                        {% elif stagiaire.has_stages %}
+                            Non disponible (état du stage : {{ stagiaire.demandes.first.etat_stage }})
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'modifier_stagiaire' stagiaire.id %}">Modifier</a> | 
+                        <a href="{% url 'supprimer_stagiaire' stagiaire.id %}">Supprimer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <footer class="footer text-center">
+        <div class="cont">
+            <p>&copy; 2025 Gestion des Stagiaires. Tous droits réservés.</p>
+            <p><strong>Centre National de l’Informatique</strong></p>
+        </div>
+    </footer>
+</body>
+</html>

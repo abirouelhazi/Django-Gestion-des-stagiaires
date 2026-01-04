@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion des Encadrants</title>
+    <link rel="stylesheet" href="{% static 'css/encadrants.css' %}" />
+  </head>
+  <body>
+    {% if messages %}
+      <script>
+          window.onload = function() {
+              {% for message in messages %}
+                  alert("{{ message }}");
+              {% endfor %}
+          }
+      </script>
+    {% endif %}
+    <div class="navbar">
+      <div>
+        <img src="{% static 'images/cni.png' %}" alt="Logo" class="logo" />
+      </div>
+      <div><a class="lien" href="{% url 'admin_dashboard' %}">Accueil</a></div>
+      <div>
+        <a class="lien" href="{% url 'gestion_demandes_stage' %}"
+          >Demandes de stages</a
+        >
+      </div>
+      <div>
+        <a class="lien" href="{% url 'gestion_stagiaires' %}">Stagiaires</a>
+      </div>
+      <div>
+        <a class="lien" href="{% url 'gestion_encadrants' %}">Encadrants</a>
+      </div>
+      <div><a class="lien" href="{% url 'profil_admin' %}">Mon Profil</a></div>
+      <div><a class="lien" href="{% url 'deconnexion' %}">Déconnexion</a></div>
+    </div>
+    <a href="{% url 'ajouter_encadrant' %}" class="btn">Ajouter un encadrant</a>
+    <div class="content">
+      <h1>Liste des Encadrants</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Spécialité</th>
+            <th>Email</th>
+            <th>Nb Stagiaires</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for info in encadrants_info %}
+          <tr>
+            <td>{{ info.encadrant.user.nom }}</td>
+            <td>{{ info.encadrant.user.prenom }}</td>
+            <td>{{ info.encadrant.specialite }}</td>
+            <td>{{ info.encadrant.user.email }}</td>
+            <td>{{ info.nombre_stagiaires }}</td>
+            <!-- Utiliser le nombre de stagiaires -->
+            <td>
+              <a href="{% url 'modifier_encadrant' info.encadrant.id %}"
+                >Modifier</a
+              >
+              |
+              <a href="{% url 'supprimer_encadrant' info.encadrant.id %}"
+                >Supprimer</a
+              >
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="6">Aucun encadrant trouvé.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <footer class="footer text-center">
+      <div class="cont">
+        <p>&copy; 2025 Gestion des Stagiaires. Tous droits réservés.</p>
+        <p><strong>Centre National de l’Informatique</strong></p>
+      </div>
+    </footer>
+    
+  </body>
+</html>
